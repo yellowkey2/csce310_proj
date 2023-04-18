@@ -32,6 +32,12 @@
             echo "id: " . $row["usr_id"]. "<br> Name: " . $row["usr_name"] .  "<br> Password: ". $row["usr_passwd"]. " <br>" . "<br>";
         }
         $conn->close();
+        // Check that connection is closed
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+        else
+        echo "Connection closed successfully <br>";
         ?>
 
         <h1>CSCE 310 Final Project</h1>
