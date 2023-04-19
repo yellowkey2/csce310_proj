@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `csce310_proj`
+-- Database: `csce310_db`
 --
-CREATE DATABASE IF NOT EXISTS `csce310_proj` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `csce310_proj`;
+CREATE DATABASE IF NOT EXISTS `csce310_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `csce310_db`;
 
 -- --------------------------------------------------------
 
