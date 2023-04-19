@@ -25,7 +25,7 @@
         // Create new line
 
         // Select users table information and display it on the website
-        $sql = "SELECT * FROM csce310_proj.users";
+        $sql = "SELECT * FROM csce310_db.users";
         $result = $conn->query($sql);
         while($row = $result->fetch_assoc()) {
             #print each row (usr_id	usr_name	usr_passwd	board_id	profile_desc)
