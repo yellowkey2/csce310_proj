@@ -18,13 +18,18 @@
 
         $username = $_REQUEST['usr_name'];
         $password = $_REQUEST['usr_password'];
+        // Check if username is already in the database
+        $sql = "SELECT * FROM users WHERE usr_name = '" . $username . "' AND usr_passwd = '" . $password . "'";
+        $result = $conn->query($sql);
 
-        $sql = "INSERT INTO users (usr_name, usr_passwd) VALUES ('" . $username . "', '" . $password . "')";
-
-        if(mysqli_query($conn, $sql)){
-            echo "Records added successfully.";
-        } else{
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+        if ($result->num_rows == 0) {
+            echo "Username or password is incorrect";
+            // Redirect to login page
+            // header("Location: index.php");
+        } else {
+            echo "Login successful";
+            // Redirect to dashboard page
+            // header("Location: dashboard.php");
         }
 
         mysqli_close($conn);

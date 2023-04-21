@@ -29,13 +29,20 @@
     ?>
 
     <h1>CSCE 310 Final Project</h1>
-    <p>My content</p>
-    <form action="login.php" method="post">
+    <p>Create Account</p>
+    <form action="create_account.php" method="post">
     Username: <input type="text" name="usr_name"><br>
     Password: <input type="text" name="usr_password"><br>
     <input type="submit">
     </form>
-    <!-- Inesert data from form into users table -->
+
+    <p>Login</p>
+    <form action="Login.php" method="get">
+    Username: <input type="text" name="usr_name"><br>
+    Password: <input type="text" name="usr_password"><br>
+    <input type="submit">
+    </form>
+
     <?php include('templates/footer.php'); ?>
 </body>
 
