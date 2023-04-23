@@ -15,7 +15,8 @@
             die("Connection failed: " . $conn->connect_error);
         } else
             echo "Connected successfully <br>";
-
+        session_start();
+        $_SESSION['usr_name'] = $username;
         $username = $_REQUEST['usr_name'];
         $password = $_REQUEST['usr_password'];
 

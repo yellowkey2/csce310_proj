@@ -3,7 +3,7 @@
 <html>
  
 <head>
-    <title>Login</title>
+    <title>Create Board</title>
 </head>
  
 <body>
@@ -15,27 +15,22 @@
             die("Connection failed: " . $conn->connect_error);
         } else
             echo "Connected successfully <br>";
+        $board_admin_id = $_REQUEST['usr_id'];
+        $board_name = $_REQUEST['board_name'];
 
-        $username = $_REQUEST['usr_name'];
-        $password = $_REQUEST['usr_password'];
-
-        session_start();
-        $_SESSION['usr_name'] = $username;
-
-        // Check if username is already in the database
-        $sql = "SELECT * FROM users WHERE usr_name = '" . $username . "' AND usr_passwd = '" . $password . "'";
+        $sql = "INSERT INTO board (board_name, board_admin_id) VALUES ('" . $board_name . "', '" . $board_admin_id . "')";
         $result = $conn->query($sql);
 
+        // Check if board was created
+        $sql = "SELECT * FROM board WHERE board_name = '" . $board_name . "' AND board_admin_id = '" . $board_admin_id . "'";
+        $result = $conn->query($sql);
         if ($result->num_rows == 0) {
-            echo "Username or password is incorrect";
-            // Redirect to login page
-            // header("Location: index.php");
+            echo "Board was not created";
         } else {
-            echo "Login successful";
+            echo "Board created successfully";
             // Redirect to dashboard page
             header("Location: dashboard.php");
         }
-
         mysqli_close($conn);
         ?>
     </center>

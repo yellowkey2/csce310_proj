@@ -37,7 +37,7 @@
     </form>
 
     <p>Login</p>
-    <form action="Login.php" method="get">
+    <form action="login.php" method="get">
     Username: <input type="text" name="usr_name"><br>
     Password: <input type="text" name="usr_password"><br>
     <input type="submit">
