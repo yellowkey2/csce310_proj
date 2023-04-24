@@ -9,12 +9,7 @@
 <body>
     <center>
         <?php
-        $conn = mysqli_connect("localhost", "root", "", "csce310_db");
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        } else
-            echo "Connected successfully <br>";
+        include("./templates/db_login.php");
 
         $username = $_REQUEST['usr_name'];
         $password = $_REQUEST['usr_password'];

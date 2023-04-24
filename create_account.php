@@ -1,36 +1,27 @@
+<?php
+session_start();
+include('./templates/db_login.php');
 
-<!DOCTYPE html>
-<html>
- 
-<head>
-    <title>Login</title>
-</head>
- 
-<body>
-    <center>
-        <?php
-        $conn = mysqli_connect("localhost", "root", "", "csce310_db");
+$_SESSION['usr_name'] = $username;
+$username = $_REQUEST['usr_name'];
+$password = $_REQUEST['usr_password'];
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        } else
-            echo "Connected successfully <br>";
-        session_start();
-        $_SESSION['usr_name'] = $username;
-        $username = $_REQUEST['usr_name'];
-        $password = $_REQUEST['usr_password'];
+//check if username already exists and return to login if it does
+$sql = "SELECT * FROM users WHERE usr_name = '" . $username . "'";
+$result = $conn->query($sql);
+if($result->num_rows > 0){
+    header("Location: index.php");
+}
 
-        $sql = "INSERT INTO users (usr_name, usr_passwd) VALUES ('" . $username . "', '" . $password . "')";
 
-        if(mysqli_query($conn, $sql)){
-            echo "Records added successfully.";
-        } else{
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
-        }
 
-        mysqli_close($conn);
-        ?>
-    </center>
-</body>
+$sql = "INSERT INTO users (usr_name, usr_passwd) VALUES ('" . $username . "', '" . $password . "')";
 
-</html>
+if (mysqli_query($conn, $sql)) {
+    echo "Records added successfully.";
+} else {
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
