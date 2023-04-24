@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php session_start(); ?>
 <html>
  
 <head>
@@ -12,7 +12,12 @@
 
     <!-- Store username from login -->
     <?php
-    session_start();
+    //if usr_name not set, return to index
+    if(!isset($_SESSION['usr_name'])){
+        header('Location: index.php');
+        exit;
+    }
+
     // Retrieve user id associated with username
     $sql = "SELECT usr_id FROM csce310_db.users WHERE usr_name = '" . $_SESSION['usr_name'] . "'";
     $result = $conn->query($sql);
@@ -41,7 +46,8 @@
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         #print each row (usr_id	usr_name	usr_passwd	board_id	profile_desc)
-        echo "Board name: " . $row["board_name"] . "<br> Board id: " . $row["board_id"] .  "<br> Board admin id: " . $row["board_admin_id"] . " <br>" . "<br>";
+        echo "<button> Board name: " . $row["board_name"] . "</button>";
+        echo "<br> Board id: " . $row["board_id"] .  "<br> Board admin id: " . $row["board_admin_id"] . " <br>" . "<br>";
     }
     ?>
 

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 
 <head>
@@ -6,29 +7,14 @@
 </head>
 
 <body>
-    <?php include('templates/header.php'); ?>
-    <?php include('templates/menu.php'); ?>
-
     <?php
+    //include templates
     include('templates/db_login.php');
-
-    // Create new line
-    // Select users table information and display it on the website
-    $sql = "SELECT * FROM csce310_db.users";
-    $result = $conn->query($sql);
-    while ($row = $result->fetch_assoc()) {
-        #print each row (usr_id	usr_name	usr_passwd	board_id	profile_desc)
-        echo "id: " . $row["usr_id"] . "<br> Name: " . $row["usr_name"] .  "<br> Password: " . $row["usr_passwd"] . " <br>" . "<br>";
-    }
-    $conn->close();
-    // Check that connection is closed
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } else
-        echo "Connection closed successfully <br>";
+    include('templates/menu.php');
+    include('templates/header.php');
     ?>
 
-    <h1>CSCE 310 Final Project</h1>
+    <h1>Project Management System</h1>
     <p>Create Account</p>
     <form action="create_account.php" method="post">
     Username: <input type="text" name="usr_name"><br>
