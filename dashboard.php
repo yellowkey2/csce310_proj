@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <html>
  
-<?php include("./templates/head.php "); ?>
+<?php include('templates/head.php'); ?>
 
 <body>
     <?php include('templates/header.php'); ?>
