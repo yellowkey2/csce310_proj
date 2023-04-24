@@ -1,9 +1,7 @@
 <?php session_start(); ?>
 <html>
  
-<head>
-    <title>Dashboard</title>
-</head>
+<?php include("./templates/head.php "); ?>
 
 <body>
     <?php include('templates/header.php'); ?>

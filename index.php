@@ -1,10 +1,6 @@
 <?php session_start(); ?>
 <html>
-
-<head>
-    <title>CSCE 310 Project</title>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
-</head>
+<?php include("./templates/head.php"); ?>
 
 <body>
     <?php
@@ -27,23 +23,28 @@
     ?>
 
     <h1>Project Management System</h1>
-    <p>Create Account</p>
-    <form action="create_account.php" method="post">
-        <?php echo $alreadyCreatedAccount ?>
-        Username: <input type="text" name="usr_name"><br>
-        Password: <input type="text" name="usr_password"><br>
-        <input type="submit">
-    </form>
+    <div class="loginContainer">
+        <div id="createAccountForm">
+            <p>Create Account</p>
+            <form action="create_account.php" method="post">
+                <?php echo $alreadyCreatedAccount ?>
+                Username: <input type="text" name="usr_name"><br>
+                Password: <input type="text" name="usr_password"><br>
+                <input type="submit">
+            </form>
+        </div>
+        <div id="loginForm">
+            <p>Login</p>
+            <form action="login.php" method="get">
+                <?php echo $passwordIncorrectMessage ?>
+                Username: <input type="text" name="usr_name"><br>
+                Password: <input type="text" name="usr_password"><br>
+                <input type="submit">
+            </form>
+        </div>
 
-    <p>Login</p>
-    <form action="login.php" method="get">
-        <?php echo $passwordIncorrectMessage ?>
-        Username: <input type="text" name="usr_name"><br>
-        Password: <input type="text" name="usr_password"><br>
-        <input type="submit">
-    </form>
-
-    <?php include('templates/footer.php'); ?>
+    </div>
 </body>
+<?php include('templates/footer.php'); ?>
 
 </html>

@@ -8,8 +8,6 @@
 
         // Check connection
         if ($conn->connect_error) {
+                echo "Could not connect to database";
                 die("Connection failed: " . $conn->connect_error);
         }
-        else
-        echo "Connected successfully <br>";
-        echo "<br>";
