@@ -12,11 +12,16 @@
     include('templates/db_login.php');
     include('templates/menu.php');
     include('templates/header.php');
+    $alreadyCreatedAccount = "";
+    if (isset($_GET["accountExists"]) && $_GET["accountExists"] == true){
+        $alreadyCreatedAccount = "<p style='color:red;'>Cannot create account: Account already exists </p>";
+    }
     ?>
 
     <h1>Project Management System</h1>
     <p>Create Account</p>
     <form action="create_account.php" method="post">
+    <?php echo $alreadyCreatedAccount ?>
     Username: <input type="text" name="usr_name"><br>
     Password: <input type="text" name="usr_password"><br>
     <input type="submit">

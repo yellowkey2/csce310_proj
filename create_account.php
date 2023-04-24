@@ -10,7 +10,8 @@ $password = $_REQUEST['usr_password'];
 $sql = "SELECT * FROM users WHERE usr_name = '" . $username . "'";
 $result = $conn->query($sql);
 if($result->num_rows > 0){
-    header("Location: index.php");
+    $account_exists = true;
+    header("Location: index.php?accountExists=$account_exists");
 }
 
 
