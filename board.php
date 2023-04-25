@@ -16,7 +16,7 @@ include("templates/db_login.php");
     }
     $cur_board_id = $_GET["boardID"];
     //make sure user has authorization to view this board 
-
+    
 
 
 

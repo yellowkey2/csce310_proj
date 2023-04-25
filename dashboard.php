@@ -21,7 +21,7 @@
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $usr_id = $row['usr_id'];
-    $board_admin_id = $usr_id;
+    $_SESSION['usr_id'] = $usr_id;
 
     ?>
 
