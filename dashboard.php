@@ -17,7 +17,7 @@
     }
 
     // Retrieve user id associated with username
-    $sql = "SELECT usr_id FROM csce310_db.users WHERE usr_name = '" . $_SESSION['usr_name'] . "'";
+    $sql = "SELECT usr_id FROM users WHERE usr_name = '" . $_SESSION['usr_name'] . "'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $usr_id = $row['usr_id'];
@@ -40,19 +40,22 @@
     <!-- Display boards that user is in-->
     <p>Boards that you are in</p>
     <?php
-    $sql = "SELECT * FROM csce310_db.board_assignments WHERE usr_id = (SELECT usr_id FROM csce310_db.users WHERE usr_name = '" . $username . "')";
+    $sql = "SELECT * FROM board_assignments WHERE usr_id = '" . $usr_id . "'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         #print each row (usr_id	usr_name	usr_passwd	board_id	profile_desc)
-        echo "<button> Board name: " . $row["board_name"] . "</button>";
-        echo "<br> Board id: " . $row["board_id"] .  "<br> Board admin id: " . $row["board_admin_id"] . " <br>" . "<br>";
+        // echo "<button> Board name: " . $row["board_name"] . "</button>";
+        // echo "<br> Board id: " . $row["board_id"] .  "<br> Board admin id: " . $row["board_admin_id"] . " <br>" . "<br>";
+        echo "<form method='get' action='dashboard.php?boardID=" . $row["board_id"] . "'>";
+        echo $row["board_id"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board'>";
+        echo "</form>";
     }
     ?>
     <hr>
     <!-- Display boards that user is admin of -->
     <p>Boards you are admin of</p>
     <?php
-    $sql = "SELECT * FROM csce310_db.board WHERE board_admin_id = $usr_id";
+    $sql = "SELECT * FROM board WHERE board_admin_id = $usr_id";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         #print each row (board_id board_name board_admin_id)
