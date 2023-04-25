@@ -2,7 +2,7 @@
 include("templates/db_login.php");
 $board_admin_id = $_REQUEST['usr_id'];
 $board_name = $_REQUEST['board_name'];
-$admin_access_level = "admin";
+$admin_access_level = 0;
 
 //add board to boards table
 $sql = "INSERT INTO board (board_name, board_admin_id) VALUES ('" . $board_name . "', '" . $board_admin_id . "')";
