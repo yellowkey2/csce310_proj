@@ -6,7 +6,6 @@
     <?php
     //include templates
     include('templates/db_login.php');
-    include('templates/menu.php');
     include('templates/header.php');
 
     //add message if account already exists
