@@ -43,7 +43,7 @@
     $sql = "SELECT * FROM board_assignments WHERE usr_id = '" . $usr_id . "'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
-        echo "<form method='get' action='board.php?boardID=" . $row["board_id"] . "'>";
+        echo "<form method='post' action='board.php?boardID=" . $row["board_id"] . "'>";
         echo $row["board_id"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board'>";
         echo "</form>";
         //allows board.php to know if user has access to the board
