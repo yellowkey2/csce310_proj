@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <html>
- 
+
 <?php include('templates/head.php'); ?>
 
 <body>
@@ -11,7 +11,7 @@
     <!-- Store username from login -->
     <?php
     //if usr_name not set, return to index
-    if(!isset($_SESSION['usr_name'])){
+    if (!isset($_SESSION['usr_name'])) {
         header('Location: index.php');
         exit;
     }
@@ -22,7 +22,7 @@
     $row = $result->fetch_assoc();
     $usr_id = $row['usr_id'];
     $board_admin_id = $usr_id;
-    
+
     ?>
 
     <!-- Display welcome messsage for usr_name -->
@@ -38,29 +38,28 @@
     </form>
 
     <!-- Display boards that user is in-->
-    <p>Boards that you are in</p>
+    <p><b>Boards that you are in:</b></p>
     <?php
     $sql = "SELECT * FROM board_assignments WHERE usr_id = '" . $usr_id . "'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
-        #print each row (usr_id	usr_name	usr_passwd	board_id	profile_desc)
-        // echo "<button> Board name: " . $row["board_name"] . "</button>";
-        // echo "<br> Board id: " . $row["board_id"] .  "<br> Board admin id: " . $row["board_admin_id"] . " <br>" . "<br>";
-        echo "<form method='get' action='dashboard.php?boardID=" . $row["board_id"] . "'>";
+        echo "<form method='get' action='board.php?boardID=" . $row["board_id"] . "'>";
         echo $row["board_id"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board'>";
         echo "</form>";
+        //allows board.php to know if user has access to the board
+        $_SESSION['board_id_' . $row["board_id"]] = true;
     }
     ?>
     <hr>
+
     <!-- Display boards that user is admin of -->
-    <p>Boards you are admin of</p>
+    <p><b>Boards you are admin of:</b></p>
     <?php
     $sql = "SELECT * FROM board WHERE board_admin_id = $usr_id";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         #print each row (board_id board_name board_admin_id)
         echo "Board name: " . $row["board_name"] . "<br> Board id: " . $row["board_id"] .  "<br> Board admin id: " . $row["board_admin_id"] . " <br>" . "<br>";
-        
     }
     $conn->close();
     ?>
@@ -71,8 +70,7 @@
         <input type="text" name="board_name" placeholder="Board name">
         <input type="hidden" name="usr_id" value="<?php echo $usr_id; ?>">
         <input type="submit" value="Delete board">
-    
+
 </body>
 
 </html>
-
