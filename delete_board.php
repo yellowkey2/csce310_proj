@@ -28,6 +28,7 @@ while ($board_id = $board_ids->fetch_assoc()) {
     $appointment_ids = $conn->query($sql);
     while ($appointment_id = $appointment_ids->fetch_assoc()) {
         $appointment_id = $appointment_id["appt_id"];
+        
         //delete row from appointments
         $sql = "DELETE FROM appointment WHERE appt_id = '" . $appointment_id . "'";
         $result = $conn->query($sql);
