@@ -48,7 +48,7 @@
         echo "<br> Board id: " . $row["board_id"] .  "<br> Board admin id: " . $row["board_admin_id"] . " <br>" . "<br>";
     }
     ?>
-
+    <hr>
     <!-- Display boards that user is admin of -->
     <p>Boards you are admin of</p>
     <?php
@@ -61,7 +61,7 @@
     }
     $conn->close();
     ?>
-    
+    <hr>
     <!-- Delete a board user is admin of -->
     <p>Delete a board</p>
     <form action="delete_board.php" method="post">
