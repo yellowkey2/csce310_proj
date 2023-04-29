@@ -1,3 +1,6 @@
+<!-- This file acts as the login option for the login page. It will redirect the user to their dashboard if their credentials match the database -->
+<!-- This file was created by Justin Heger -->
+
 <?php
 session_start();
 include("./templates/db_login.php");

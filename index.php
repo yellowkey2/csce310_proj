@@ -1,3 +1,6 @@
+<!-- This file acts as the login page for the user. It also contains functionality to create an account -->
+<!-- This file was created by Justin Heger -->
+
 <?php session_start(); ?>
 <html>
 <?php include("./templates/head.php"); ?>

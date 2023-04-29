@@ -1,3 +1,6 @@
+<!-- This file takes care of creating an account for a new user -->
+<!-- This file was created by Justin Heger -->
+
 <?php
 session_start();
 include('./templates/db_login.php');
