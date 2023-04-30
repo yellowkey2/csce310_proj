@@ -29,19 +29,29 @@
     ?>
 
     <!-- Display welcome messsage for usr_name -->
-    <p>Welcome <?php echo $_SESSION['usr_name']; ?>!</p>
-    <p> Your user id is <?php echo $usr_id; ?> </p>
+    <p style="padding-left: 10px">Welcome <?php echo $_SESSION['usr_name']; ?>!</p>
+    <p style="padding-left: 10px"> Your user id is <?php echo $usr_id; ?> </p>
+    <hr>
 
     <!-- Create board -->
-    <p>Create a board</p>
-    <form action="create_board.php" method="post">
+    <p style="padding-left: 10px">Create a board</p>
+    <form action="create_board.php" method="post" style="padding-left: 10px">
         <input type="text" name="board_name" placeholder="Board name">
         <input type="hidden" name="usr_id" value="<?php echo $usr_id; ?>">
         <input type="submit" value="Create board">
     </form>
+    
+    <!-- Delete a board user is admin of -->
+    <p style="padding-left: 10px">Delete a board</p>
+    <form action="delete_board.php" method="post" style="padding-left: 10px">
+        <input type="text" name="board_name" placeholder="Board name">
+        <input type="hidden" name="usr_id" value="<?php echo $usr_id; ?>">
+        <input type="submit" value="Delete board">
+    </form>
+    <hr>
 
     <!-- Display boards that user is in-->
-    <p><b>Boards that you are in:</b></p>
+    <p style="padding-left: 10px"><b>Boards that you are in:</b></p>
     <?php
     $sql = "SELECT * FROM board_assignments WHERE usr_id = '" . $usr_id . "'";
     $result = $conn->query($sql);
@@ -57,7 +67,7 @@
     <hr>
 
     <!-- Display boards that user is admin of -->
-    <p><b>Boards you are admin of:</b></p>
+    <p style="padding-left: 10px"><b>Boards you are admin of:</b></p>
     <?php
     $sql = "SELECT * FROM board WHERE board_admin_id = $usr_id";
     $result = $conn->query($sql);
@@ -68,12 +78,6 @@
     $conn->close();
     ?>
     <hr>
-    <!-- Delete a board user is admin of -->
-    <p>Delete a board</p>
-    <form action="delete_board.php" method="post">
-        <input type="text" name="board_name" placeholder="Board name">
-        <input type="hidden" name="usr_id" value="<?php echo $usr_id; ?>">
-        <input type="submit" value="Delete board">
 
 </body>
 
