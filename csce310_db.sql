@@ -122,45 +122,36 @@ INSERT INTO `users` (`usr_id`, `usr_name`, `usr_passwd`, `board_id`, `profile_de
 --
 ALTER TABLE `appointment`
   ADD PRIMARY KEY (`appt_id`),
-  ADD UNIQUE KEY `board_id` (`board_id`);
 
 --
 -- Indexes for table `appointment_assignments`
 --
 ALTER TABLE `appointment_assignments`
   ADD PRIMARY KEY (`app_assignment_id`),
-  ADD UNIQUE KEY `usr_id` (`usr_id`),
-  ADD UNIQUE KEY `appointment_id` (`appointment_id`);
 
 --
 -- Indexes for table `board`
 --
 ALTER TABLE `board`
   ADD PRIMARY KEY (`board_id`),
-  ADD UNIQUE KEY `board_admin_id` (`board_admin_id`);
 
 --
 -- Indexes for table `board_assignments`
 --
 ALTER TABLE `board_assignments`
   ADD PRIMARY KEY (`assignment_id`),
-  ADD UNIQUE KEY `usr_id` (`usr_id`),
-  ADD UNIQUE KEY `board_id` (`board_id`);
 
 --
 -- Indexes for table `board_item`
 --
 ALTER TABLE `board_item`
   ADD PRIMARY KEY (`item_id`),
-  ADD UNIQUE KEY `usr_id` (`usr_id`),
-  ADD UNIQUE KEY `board_id` (`board_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`usr_id`),
-  ADD UNIQUE KEY `board_id` (`board_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -200,7 +191,7 @@ ALTER TABLE `board_item`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123456;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Constraints for dumped tables
