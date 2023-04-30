@@ -20,13 +20,20 @@
         exit;
     }
 
-    // Retrieve user id associated with username
+    // // Retrieve user id associated with username
     $sql = "SELECT usr_id FROM users WHERE usr_name = '" . $_SESSION['usr_name'] . "'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $usr_id = $row['usr_id'];
     $_SESSION['usr_id'] = $usr_id;
 
+    // Retrieve all board ids the user is a member of
+    // $sql = "SELECT board_id FROM board_assignments WHERE usr_id = '" . $usr_id . "'";
+    // $result = $conn->query($sql);
+    // $board_ids = array();
+    // while ($row = $result->fetch_assoc()) {
+    //     array_push($board_ids, $row['board_id']);
+    // }
     ?>
 
     <!-- Display welcome messsage for usr_name -->
@@ -54,11 +61,23 @@
     <!-- Display boards that user is in-->
     <p style="padding-left: 10px"><b>Boards that you are in:</b></p>
     <?php
-    $sql = "SELECT * FROM board_assignments WHERE usr_id = '" . $usr_id . "'";
+    // $sql = "SELECT * FROM board_assignments WHERE usr_id = '" . $usr_id . "'";
+    // $result = $conn->query($sql);
+    // while ($row = $result->fetch_assoc()) {
+    //     echo "<form method='post' style='padding-left: 10px' action='board.php?boardID=" . $row["board_id"] . "'>";
+    //     echo $row["board_id"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board' >";
+    //     echo "</form>";
+    //     //allows board.php to know if user has access to the board
+    //     $_SESSION["b_id_". $row["board_id"]] = true;
+    // }
+    $sql = "SELECT b.board_id, b.board_name
+    FROM board_assignments ba
+    JOIN board b ON ba.board_id = b.board_id
+    WHERE ba.usr_id = '" . $usr_id . "' OR b.board_admin_id = '" . $usr_id . "'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         echo "<form method='post' style='padding-left: 10px' action='board.php?boardID=" . $row["board_id"] . "'>";
-        echo $row["board_id"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board' >";
+        echo $row["board_name"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board' >";
         echo "</form>";
         //allows board.php to know if user has access to the board
         $_SESSION["b_id_". $row["board_id"]] = true;

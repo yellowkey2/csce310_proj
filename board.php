@@ -44,6 +44,33 @@ include("templates/db_login.php");
     //     exit;
     // }
 
+    // adding a user to the board handling
+    if (isset($_POST['addUser'])) {
+        $newUser = $_POST['newUser'];
+        // Check if user ID exists
+        $sql = "SELECT * FROM users WHERE usr_id = " . $newUser;
+        $result = $conn->query($sql);
+        if ($result->num_rows == 0) {
+            echo "User ID not found.";
+        } else {
+            // Check if user is already assigned to board
+            $sql = "SELECT * FROM board_assignments WHERE board_id = $cur_board_id AND usr_id = $newUser";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                echo "User is already assigned to this board.";
+            } else {
+                // Add new row to board_assignments table
+                $sql = "INSERT INTO board_assignments (board_id, usr_id, access_level) VALUES ($cur_board_id, $newUser, 2)";
+                if ($conn->query($sql) === TRUE) {
+                    echo "User added to board.";
+                    // Reload current page
+                    header("Refresh:0");
+                } else {
+                    echo "Error adding user: " . $conn->error;
+                }
+            }
+        }
+    }
 
     $conn->close();
     ?>
@@ -60,6 +87,27 @@ include("templates/db_login.php");
         </div>
         <div id="boardAppointments"></div>
         <div id="boardComments"></div>
+
+        <!-- area to add users to that board -->
+        <div id="boardUsers">
+        <h2>Add User to Board</h2>
+        <form method="post">
+            <label for="usr_id">User ID:</label>
+            <input type="text" id="usr_id" name="usr_id">
+            <input type="submit" value="Add User">
+        </form>
+        <?php
+        if (isset($_POST["usr_id"])) {
+            $usr_id = $_POST["usr_id"];
+            $sql = "INSERT INTO board_assignments (usr_id, board_id) VALUES ($usr_id, $cur_board_id)";
+            if ($conn->query($sql) === TRUE) {
+                echo "User added successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+        ?>
+    </div>
     </div>
 
 
