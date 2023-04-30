@@ -1,4 +1,4 @@
-*{
+html{
     font-family: Arial, Helvetica, sans-serif;
 }
 h1{
@@ -36,6 +36,6 @@ body{
 #boardContainer{
     display: flex;
     flex-direction: row;
-    min-width: 100%;
+    min-width: 90vh;
     min-height: 100%;
 }

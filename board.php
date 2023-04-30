@@ -48,7 +48,15 @@ include("templates/db_login.php");
     $conn->close();
     ?>
     <div id="boardContainer">
-        <div id="boardItems"></div>
+        <div id="boardItems">
+            <?php
+            if ($access_level < 2) {
+                include("./boardTemplates/itemsEditor.php");
+            } else {
+                include("./boardTemplates/itemsViewer.php");
+            }
+            ?>
+        </div>
         <div id="boardAppointments"></div>
         <div id="boardComments"></div>
     </div>

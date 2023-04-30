@@ -61,8 +61,7 @@
         echo $row["board_id"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board' >";
         echo "</form>";
         //allows board.php to know if user has access to the board
-        $_SESSION[$row["board_id"]] = true;
-        $_SESSION["board_id"] = $row["board_id"];
+        $_SESSION["b_id_". $row["board_id"]] = true;
     }
     ?>
     <hr>
