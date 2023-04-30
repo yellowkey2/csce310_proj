@@ -6,14 +6,14 @@ if ($conn->connect_error) {
 } else
     echo "Connected successfully <br>";
 $board_admin_id = $_REQUEST['usr_id'];
-$board_name = $_REQUEST['board_name'];
+$board_id = $_REQUEST['board_id'];
 
-//get board_id of board to be deleted
-$sql = "SELECT board_id FROM board WHERE board_name = '" . $board_name . "' AND board_admin_id = '" . $board_admin_id . "'";
-$board_ids = $conn->query($sql);
+// //get board_id of board to be deleted
+// $sql = "SELECT board_id FROM board WHERE board_name = '" . $board_name . "' AND board_admin_id = '" . $board_admin_id . "'";
+// $board_ids = $conn->query($sql);
 
-while ($board_id = $board_ids->fetch_assoc()) {
-    $board_id = $board_id['board_id'];
+// while ($board_id = $board_ids->fetch_assoc()) {
+    // $board_id = $board_id['board_id'];
     //delete row from board assignments, board_items, appointments and appointment_assignments
     $sql = "DELETE FROM board_assignments WHERE board_id = '" . $board_id . "'";
     $result = $conn->query($sql);
@@ -24,7 +24,7 @@ while ($board_id = $board_ids->fetch_assoc()) {
     $sql = "DELETE FROM board WHERE board_id = '" . $board_id . "'";
     $result = $conn->query($sql);
     //get apointment id from appointments
-    $sql = "SELECT appointment_id FROM appointments WHERE board_id = '" . $board_id . "'";
+    $sql = "SELECT 'appointment_id' FROM appointment WHERE board_id = '" . $board_id . "'";
     $appointment_ids = $conn->query($sql);
     while ($appointment_id = $appointment_ids->fetch_assoc()) {
         $appointment_id = $appointment_id["appt_id"];
@@ -36,9 +36,9 @@ while ($board_id = $board_ids->fetch_assoc()) {
         $sql = "DELETE FROM appointment_assignments WHERE appointment_id = '" . $appointment_id . "'";
         $result = $conn->query($sql);
     }
-}
+// }
 // Check if board was deleted
-$sql = "SELECT * FROM board WHERE board_name = '" . $board_name . "' AND board_admin_id = '" . $board_admin_id . "'";
+$sql = "SELECT * FROM board WHERE board_id = '" . $board_id . "' AND board_admin_id = '" . $board_admin_id . "'";
 $result = $conn->query($sql);
 if ($result->num_rows == 0) {
 

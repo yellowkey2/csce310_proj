@@ -12,7 +12,7 @@ $result = $conn->query($sql);
 $board_id = $conn->insert_id;
 
 //add the admin to the board assigmnents table
-$sql = "INSERT INTO board_assignments (usr_id, board_id, access_level) VALUES ('". $board_admin_id . "', " . $board_id . ", '" . $admin_access_level . "')"; 
+$sql = "INSERT INTO board_assignments (usr_id, board_id, access_level) VALUES ('". $board_admin_id . "', " . $board_id . ", " . $admin_access_level . ")"; 
 $result = $conn->query($sql);
 
 // Check if board was created

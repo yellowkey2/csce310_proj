@@ -3,5 +3,6 @@
 <?php
 // session_start();
 include("templates/db_login.php");
+print_r($_SESSION);
 echo "items editor";
 ?>

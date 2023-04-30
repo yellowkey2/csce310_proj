@@ -45,7 +45,7 @@
     <!-- Delete a board user is admin of -->
     <p style="padding-left: 10px">Delete a board</p>
     <form action="delete_board.php" method="post" style="padding-left: 10px">
-        <input type="text" name="board_name" placeholder="Board name">
+        <input type="text" name="board_id" placeholder="Board ID">
         <input type="hidden" name="usr_id" value="<?php echo $usr_id; ?>">
         <input type="submit" value="Delete board">
     </form>

@@ -2,6 +2,7 @@
 
 <?php
 session_start();
+print_r($_SESSION);
 include("templates/db_login.php");
 echo "items viewer";
 ?>
