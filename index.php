@@ -24,7 +24,7 @@
     }
     ?>
 
-    <h1>Project Management System</h1>
+    <h1 style="margin-left: 5px;">Project Management System</h1>
     <div class="loginContainer">
         <div id="createAccountForm">
             <p>Create Account</p>

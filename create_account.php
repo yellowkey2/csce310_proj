@@ -21,7 +21,7 @@ if($result->num_rows > 0){
 $sql = "INSERT INTO users (usr_name, usr_passwd) VALUES ('" . $username . "', '" . $password . "')";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Records added successfully.";
+    echo '<div style="font-size: 24px; text-align: center; margin-top: 50px;">Records added successfully.</div>';
     echo '<script type="text/javascript">
               window.setTimeout(function(){
                   window.history.back();
