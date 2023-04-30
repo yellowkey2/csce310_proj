@@ -1,5 +1,6 @@
 <!-- This file displays the dashboard for a user. It lists each board a user is apart of aand any boards they own. It also allows the user to create a board-->
 <!-- This file was created by Justin Heger -->
+<!-- This file was edited by Logan Talton -->
 
 <?php session_start(); ?>
 <html>
@@ -40,7 +41,7 @@
         <input type="hidden" name="usr_id" value="<?php echo $usr_id; ?>">
         <input type="submit" value="Create board">
     </form>
-    
+
     <!-- Delete a board user is admin of -->
     <p style="padding-left: 10px">Delete a board</p>
     <form action="delete_board.php" method="post" style="padding-left: 10px">
@@ -56,8 +57,8 @@
     $sql = "SELECT * FROM board_assignments WHERE usr_id = '" . $usr_id . "'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
-        echo "<form method='post' action='board.php?boardID=" . $row["board_id"] . "'>";
-        echo $row["board_id"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board'>";
+        echo "<form method='post' style='padding-left: 10px' action='board.php?boardID=" . $row["board_id"] . "'>";
+        echo $row["board_id"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board' >";
         echo "</form>";
         //allows board.php to know if user has access to the board
         $_SESSION[$row["board_id"]] = true;
@@ -73,7 +74,7 @@
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         #print each row (board_id board_name board_admin_id)
-        echo "Board name: " . $row["board_name"] . "<br> Board id: " . $row["board_id"] .  "<br> Board admin id: " . $row["board_admin_id"] . " <br>" . "<br>";
+        echo "<p style='padding-left: 10px'>Board name: " . $row["board_name"] . "<br> Board id: " . $row["board_id"] .  "<br> Board admin id: " . $row["board_admin_id"] . " <br>" . "</p>";
     }
     $conn->close();
     ?>
