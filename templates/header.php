@@ -1,3 +1,3 @@
 <header>
-    <img src="images/pmslogo.png" alt="logo" />
+    <img id="logoImage" style="max-height: 10vh" src="images/pmslogo.png" alt="logo" />
 </header>
