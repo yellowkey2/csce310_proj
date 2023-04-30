@@ -39,3 +39,12 @@ body{
     min-width: 90vh;
     min-height: 100%;
 }
+
+#boardItems{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 33%;
+    border-right: 1px solid black;
+}

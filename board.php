@@ -49,6 +49,7 @@ include("templates/db_login.php");
     ?>
     <div id="boardContainer">
         <div id="boardItems">
+            <h2>Items</h2>
             <?php
             if ($access_level < 2) {
                 include("./boardTemplates/itemsEditor.php");

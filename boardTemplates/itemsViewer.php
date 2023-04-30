@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-print_r($_SESSION);
+// print_r($_SESSION);
 include("templates/db_login.php");
 echo "items viewer";
 $board_id = "";
@@ -18,5 +18,8 @@ if($_SESSION['b_id_' . $board_id] == false){
 }
 //get and display items
 $sql = "SELECT FROM board_item WHERE board_id = " . $board_id;
-
+$items = $conn->query($sql);
+while($row = $items->fetch_assoc()){
+    echo $row['item_content'];
+}
 ?>
