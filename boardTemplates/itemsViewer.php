@@ -20,6 +20,6 @@ if($_SESSION['b_id_' . $board_id] == false){
 $sql = "SELECT FROM board_item WHERE board_id = " . $board_id;
 $items = $conn->query($sql);
 while($row = $items->fetch_assoc()){
-    echo $row['item_content'];
+    echo "<p class='boardItemViewer'> * " . $row['item_content'] . "</p>";
 }
 ?>

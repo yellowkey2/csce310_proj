@@ -3,7 +3,6 @@
 <?php
 // print_r($_SESSION);
 include("templates/db_login.php");
-echo "items editor";
 $board_id = "";
 //check if got a boardid
 if(!$_GET["boardID"]){
@@ -19,6 +18,12 @@ if($_SESSION['b_id_' . $board_id] == false){
 $sql = "SELECT * FROM board_item WHERE board_id = '" . $board_id . "'";
 $items = $conn->query($sql);
 while($row = $items->fetch_assoc()){
-    echo "<br>" . $row['item_content'];
+    echo "<form method='POST' class='boardItemEditor'>";
+    echo "complete? ";
+    echo "<input type='checkbox' name='item' value='" . $row['item_id'] . "'>";
+    echo $row['item_content'];  
+    echo "<button type='submit' name='delete'>Delete</button>";
+    echo "<button type='submit' name='update'>Update</button>";
+    echo "</form>";
 }
 ?>
