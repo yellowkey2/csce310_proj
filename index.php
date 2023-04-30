@@ -2,7 +2,12 @@
 <!-- This file was created by Justin Heger -->
 <!-- This file was edited by Logan Talton -->
 
-<?php session_start(); ?>
+<?php
+//make sure session is empty
+session_start(); 
+session_destroy();
+session_start();
+?>
 <html>
 <?php include("./templates/head.php"); ?>
 

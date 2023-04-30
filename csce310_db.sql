@@ -121,37 +121,37 @@ INSERT INTO `users` (`usr_id`, `usr_name`, `usr_passwd`, `board_id`, `profile_de
 -- Indexes for table `appointment`
 --
 ALTER TABLE `appointment`
-  ADD PRIMARY KEY (`appt_id`)
+  ADD PRIMARY KEY (`appt_id`);
 
 --
 -- Indexes for table `appointment_assignments`
 --
 ALTER TABLE `appointment_assignments`
-  ADD PRIMARY KEY (`app_assignment_id`)
+  ADD PRIMARY KEY (`app_assignment_id`);
 
 --
 -- Indexes for table `board`
 --
 ALTER TABLE `board`
-  ADD PRIMARY KEY (`board_id`)
+  ADD PRIMARY KEY (`board_id`);
 
 --
 -- Indexes for table `board_assignments`
 --
 ALTER TABLE `board_assignments`
-  ADD PRIMARY KEY (`assignment_id`)
+  ADD PRIMARY KEY (`assignment_id`);
 
 --
 -- Indexes for table `board_item`
 --
 ALTER TABLE `board_item`
-  ADD PRIMARY KEY (`item_id`)
+  ADD PRIMARY KEY (`item_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`usr_id`)
+  ADD PRIMARY KEY (`usr_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
