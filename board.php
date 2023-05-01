@@ -111,6 +111,21 @@ include("templates/db_login.php");
                 }
             }
             ?>
+
+            <h3>Users on Board</h3>
+            <ul style="list-style-position: inside; margin-left: 0; padding-left: 0; position: relative; top: -20px;">
+                <?php
+                $sql = "SELECT users.usr_id, users.usr_name FROM users INNER JOIN board_assignments ON users.usr_id = board_assignments.usr_id WHERE board_assignments.board_id = $cur_board_id";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        echo "<li>" . $row['usr_name'] . " (" . $row["usr_id"] . ")</li>";
+                    }
+                } else {
+                    echo "No users currently assigned to this board.";
+                }
+                ?>
+            </ul>
         </div>
         
         
