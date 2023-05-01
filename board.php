@@ -1,3 +1,6 @@
+<!-- This file displays the current status of the board, including meetings, comments, items, and current users. Also includes functionality around each. -->
+<!-- This file was created by Sloan Davis & Logan Talton -->
+
 <?php
 session_start();
 include("templates/db_login.php");
