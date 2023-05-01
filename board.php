@@ -85,32 +85,36 @@ include("templates/db_login.php");
             }
             ?>
         </div>
-        <div id="boardAppointments"></div>
-        <div id="boardComments"></div>
+        <div id="boardAppointments">
+            <h2>Board Appointments</h2>
+        </div>
+        <div id="boardComments">
+            <h2>Board Comments</h2>
+        </div>
 
         <!-- area to add users to that board -->
         <div id="boardUsers">
-        <h2>Add User to Board</h2>
-        <form method="post">
-            <label for="usr_id">User ID:</label>
-            <input type="text" id="usr_id" name="usr_id">
-            <input type="submit" value="Add User">
-        </form>
-        <?php
-        if (isset($_POST["usr_id"])) {
-            $usr_id = $_POST["usr_id"];
-            $sql = "INSERT INTO board_assignments (usr_id, board_id) VALUES ($usr_id, $cur_board_id)";
-            if ($conn->query($sql) === TRUE) {
-                echo "User added successfully";
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+            <h2>Add User to Board</h2>
+            <form method="post">
+                <label for="usr_id">User ID:</label>
+                <input type="text" id="usr_id" name="usr_id">
+                <input type="submit" value="Add User">
+            </form>
+            <?php
+            if (isset($_POST["usr_id"])) {
+                $usr_id = $_POST["usr_id"];
+                $sql = "INSERT INTO board_assignments (usr_id, board_id) VALUES ($usr_id, $cur_board_id)";
+                if ($conn->query($sql) === TRUE) {
+                    echo "User added successfully";
+                } else {
+                    echo "Error: " . $sql . "<br>" . $conn->error;
+                }
             }
-        }
-        ?>
+            ?>
+        </div>
+        
+        
     </div>
-    </div>
-
-
 
 </body>
 

@@ -49,7 +49,7 @@ header{
     align-items: center;
     justify-content: start;
     flex-direction: column;
-    width: 33%;
+    width: 25%;
     border-right: 1px solid black;
 }
 .boardItemViewer{
@@ -60,4 +60,30 @@ header{
     padding-top: 3px;
     font-size: 1em;
     border-top: 1px solid black;
+}
+
+#boardAppointments {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 25%;
+    border-right: 1px solid black;
+}
+
+#boardComments {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 25%;
+    border-right: 1px solid black;
+}
+
+#boardUsers {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    width: 25%;
 }
