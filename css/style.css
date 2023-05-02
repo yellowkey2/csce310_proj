@@ -49,7 +49,7 @@ header{
     align-items: center;
     justify-content: start;
     flex-direction: column;
-    width: 25%;
+    width: 33%;
     border-right: 1px solid black;
 }
 .boardItemViewer{
@@ -67,7 +67,7 @@ header{
     align-items: center;
     justify-content: start;
     flex-direction: column;
-    width: 25%;
+    width: 33%;
     border-right: 1px solid black;
 }
 
@@ -76,16 +76,16 @@ header{
     align-items: center;
     justify-content: start;
     flex-direction: column;
-    width: 25%;
-    border-right: 1px solid black;
+    width: 33%;
+    /* border-right: 1px solid black; */
 }
 
 #boardUsers {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: start;
-    flex-direction: column;
-    width: 25%;
+    flex-direction: row;
+    min-height: 50vh;
 }
 
 /* #boardUsersList {

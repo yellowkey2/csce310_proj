@@ -94,98 +94,66 @@ include("templates/db_login.php");
         <div id="boardComments">
             <h2>Board Comments</h2>
         </div>
+    </div>
+    <hr>
+    <div id="boardUsers">
+        <h2>Add User to Board</h2>
+        <form method="post">
+            <label for="usr_id">User ID:</label>
+            <input type="text" id="usr_id" name="usr_id">
+            <input type="submit" value="Add User">
+            <span> is Editor? </span>
+            <input type="checkbox" name="isEditor" value="Check to add editor permissions">
+            <br>
+        </form>
+        <?php
+        if (isset($_POST["usr_id"])) {
+            $usr_id = $_POST["usr_id"];
+            $access_level = 2;
+            if(isset($_POST["isEditor"])){
+                $access_level = 1;
+            }
+            $sql = "INSERT INTO board_assignments (usr_id, board_id, access_level) VALUES ($usr_id, $cur_board_id, $access_level)";
+            if ($conn->query($sql) === TRUE) {
+                echo "User added successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+        ?>
+        <h2>Remove User from Board</h2>
+        <form method="post">
+            <label for="remove_usr_id">User ID:</label>
+            <input type="text" id="remove_usr_id" name="remove_usr_id">
+            <input type="submit" value="Remove User">
+        </form>
+        <?php
+        if (isset($_POST["remove_usr_id"])) {
+            $remove_usr_id = $_POST["remove_usr_id"];
+            $sql = "DELETE FROM board_assignments WHERE board_id=$cur_board_id AND usr_id=$remove_usr_id";
+            if ($conn->query($sql) === TRUE) {
+                echo "User removed successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+        }
+        ?>
 
-        <!-- area to add users to that board
-        <div id="boardUsers">
-            <h2>Add User to Board</h2>
-            <form method="post">
-                <label for="usr_id">User ID:</label>
-                <input type="text" id="usr_id" name="usr_id">
-                <input type="submit" value="Add User">
-            </form>
+        <h2>Current Board Users</h2>
+        <ul>
             <?php
-            if (isset($_POST["usr_id"])) {
-                $usr_id = $_POST["usr_id"];
-                $sql = "INSERT INTO board_assignments (usr_id, board_id) VALUES ($usr_id, $cur_board_id)";
-                if ($conn->query($sql) === TRUE) {
-                    echo "User added successfully";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
+            $sql = "SELECT DISTINCT usr_id FROM board_assignments WHERE board_id = $cur_board_id";
+            $result = $conn->query($sql);
+            while ($row = $result->fetch_assoc()) {
+                $usr_id = $row["usr_id"];
+                $sql2 = "SELECT usr_name FROM users WHERE usr_id = $usr_id";
+                $result2 = $conn->query($sql2);
+                $row2 = $result2->fetch_assoc();
+                $usr_name = $row2["usr_name"];
+                echo "<li>$usr_id: $usr_name</li>";
             }
             ?>
-
-            <h3>Users on Board</h3>
-            <ul style="list-style-position: inside; margin-left: 0; padding-left: 0; position: relative; top: -20px;">
-                <?php
-                $sql = "SELECT users.usr_id, users.usr_name FROM users INNER JOIN board_assignments ON users.usr_id = board_assignments.usr_id WHERE board_assignments.board_id = $cur_board_id";
-                $result = $conn->query($sql);
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        echo "<li>" . $row['usr_name'] . " (" . $row["usr_id"] . ")</li>";
-                    }
-                } else {
-                    echo "No users currently assigned to this board.";
-                }
-                ?>
-            </ul>
-        </div> -->
-
-        <div id="boardUsers">
-            <h2>Add User to Board</h2>
-            <form method="post">
-                <label for="usr_id">User ID:</label>
-                <input type="text" id="usr_id" name="usr_id">
-                <input type="submit" value="Add User">
-            </form>
-            <?php
-            if (isset($_POST["usr_id"])) {
-                $usr_id = $_POST["usr_id"];
-                $sql = "INSERT INTO board_assignments (usr_id, board_id) VALUES ($usr_id, $cur_board_id)";
-                if ($conn->query($sql) === TRUE) {
-                    echo "User added successfully";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            }
-            ?>
-            <h2>Remove User from Board</h2>
-            <form method="post">
-                <label for="remove_usr_id">User ID:</label>
-                <input type="text" id="remove_usr_id" name="remove_usr_id">
-                <input type="submit" value="Remove User">
-            </form>
-            <?php
-            if (isset($_POST["remove_usr_id"])) {
-                $remove_usr_id = $_POST["remove_usr_id"];
-                $sql = "DELETE FROM board_assignments WHERE board_id=$cur_board_id AND usr_id=$remove_usr_id";
-                if ($conn->query($sql) === TRUE) {
-                    echo "User removed successfully";
-                } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
-                }
-            }
-            ?>
-
-            <h2>Current Board Users</h2>
-            <ul>
-                <?php
-                $sql = "SELECT DISTINCT usr_id FROM board_assignments WHERE board_id = $cur_board_id";
-                $result = $conn->query($sql);
-                while ($row = $result->fetch_assoc()) {
-                    $usr_id = $row["usr_id"];
-                    $sql2 = "SELECT usr_name FROM users WHERE usr_id = $usr_id";
-                    $result2 = $conn->query($sql2);
-                    $row2 = $result2->fetch_assoc();
-                    $usr_name = $row2["usr_name"];
-                    echo "<li>$usr_id: $usr_name</li>";
-                }
-                ?>
-            </ul>
-        </div>
-
-        
-        
+        </ul>
     </div>
 
 </body>
