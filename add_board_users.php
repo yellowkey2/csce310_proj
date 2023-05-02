@@ -1,3 +1,9 @@
+<?php 
+if(!$cur_board_id){
+    $cur_board_id = $_SESSION['curBoardId'];
+}
+?>
+
 <div id="boardUsers">
         <h2>Add User to Board</h2>
         <form method="post">

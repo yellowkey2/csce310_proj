@@ -24,6 +24,7 @@ include("templates/db_login.php");
         exit;
     }
     $cur_board_id = $_GET["boardID"];
+    $_SESSION['curBoardID'] = $cur_board_id;
 
     //make sure user has authorization to view this board 
     $sql = "SELECT * FROM board_assignments WHERE usr_id = " . $_SESSION['usr_id'] . " AND board_id = " . $cur_board_id;
