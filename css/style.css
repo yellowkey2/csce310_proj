@@ -47,7 +47,7 @@ header{
 #boardItems{
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
     flex-direction: column;
     width: 33%;
     border-right: 1px solid black;
@@ -88,6 +88,6 @@ header{
     min-height: 50vh;
 }
 
-/* #boardUsersList {
-    margin: 50px 0 0 5px;
-} */
+#addBoardItem{
+    margin-top: auto;
+}
