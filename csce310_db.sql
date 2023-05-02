@@ -30,7 +30,7 @@ USE `csce310_db`;
 --
 
 CREATE TABLE `appointment` (
-  `appt_time` date NOT NULL,
+  `appt_time` datetime NOT NULL,
   `appt_duration` time NOT NULL,
   `appt_id` int(11) NOT NULL,
   `appt_type` text NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE `board_assignments` (
 CREATE TABLE `board_item` (
   `item_id` int(11) NOT NULL,
   `item_timestamp` date NOT NULL,
-  `item_posttype` varchar(255) NOT NULL,
+  `item_posttype` int(11) NOT NULL,
   `item_content` varchar(255) NOT NULL,
   `usr_id` int(11) NOT NULL,
   `board_id` int(11) NOT NULL

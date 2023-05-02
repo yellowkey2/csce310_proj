@@ -73,7 +73,7 @@
     $sql = "SELECT b.board_id, b.board_name
     FROM board_assignments ba
     JOIN board b ON ba.board_id = b.board_id
-    WHERE ba.usr_id = '" . $usr_id . "' OR b.board_admin_id = '" . $usr_id . "'";
+    WHERE ba.usr_id = '" . $usr_id . "'"; //. "' OR b.board_admin_id = '" . $usr_id . "'";
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         echo "<form method='post' style='padding-left: 10px' action='board.php?boardID=" . $row["board_id"] . "'>";
