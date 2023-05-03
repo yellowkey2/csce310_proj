@@ -13,6 +13,10 @@ header{
     display: flex;
     flex-direction: row;
 }
+form.vertForm{
+    display: flex;
+    flex-direction: column;
+}
 
 .loginContainer{
     display: flex;
@@ -90,4 +94,13 @@ header{
 
 #addBoardItem{
     margin-top: auto;
+}
+#addAppointment{
+    margin-top: auto;
+}
+
+.vertScroll{
+    margin-top: 0;
+    height: 100%;
+    overflow-y: scroll;
 }

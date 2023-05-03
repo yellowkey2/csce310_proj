@@ -6,7 +6,7 @@ if (!$cur_board_id) {
 
 <div id="boardUsers">
     <h2>Add User to Board</h2>
-    <form method="post">
+    <form method="post" class="vertForm">
         <label for="usr_id">User ID:</label>
         <input type="text" id="usr_id" name="usr_id">
         <input type="submit" value="Add User">
@@ -48,7 +48,7 @@ if (!$cur_board_id) {
     }
     ?>
     <h2>Remove User from Board</h2>
-    <form method="post">
+    <form method="post" class="vertForm">
         <label for="remove_usr_id">User ID:</label>
         <input type="text" id="remove_usr_id" name="remove_usr_id">
         <input type="submit" value="Remove User">
