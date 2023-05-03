@@ -98,6 +98,10 @@
     ?>
     <hr>
 
+    <form method="post" action="delete_account.php">
+        <button id="deleteAccountBtn" type="submit" name="deleteAccount">Delete Account</button>
+    </form>
+
 </body>
 
 </html>

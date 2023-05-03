@@ -104,3 +104,8 @@ form.vertForm{
     height: 100%;
     overflow-y: scroll;
 }
+
+#deleteAccountBtn{
+    background-color: red;
+    color: white;
+}
