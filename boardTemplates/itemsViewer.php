@@ -1,10 +1,8 @@
 <!-- This is a component that will be rendered in the Dashboard to display board items without editing capability -->
 
 <?php
-session_start();
 // print_r($_SESSION);
 include("templates/db_login.php");
-echo "items viewer";
 $board_id = "";
 //check if got a boardid
 if(!$_GET["boardID"]){
@@ -17,9 +15,11 @@ if($_SESSION['b_id_' . $board_id] == false){
     exit;
 }
 //get and display items
-$sql = "SELECT FROM board_item WHERE board_id = " . $board_id;
+$sql = "SELECT * FROM board_item WHERE board_id = " . $board_id;
 $items = $conn->query($sql);
 while($row = $items->fetch_assoc()){
     echo "<p class='boardItemViewer'> * " . $row['item_content'] . "</p>";
 }
 ?>
+<!-- Neccessary for spacing. DO NOT REMOVE -->
+<p id="addBoardItem"></p>
