@@ -25,3 +25,10 @@ while ($row = $items->fetch_assoc()) {
     echo "</form>";
 }
 ?>
+<div id="addAppointment">
+    <h3>Add Item:</h3>
+     <form method="POST">
+        <input type="text" name="apptContent" placeholder='Describe Appointment'>
+        <button type="submit" name="addItemBtn">Submit</button>
+     </form>
+</div>
