@@ -58,7 +58,7 @@ if (isset($_POST['deleteAppt'])) {
 //update appt
 if (isset($_POST['updateAppt']) && isset($_POST['newUsr'])) {
     //check if user is in board
-    $sql = "SELECT usr_id FROM board_assignments WHERE usr_id = " . $_POST['newUsr'] . "AND board_id = $board_id";
+    $sql = "SELECT usr_id FROM board_assignments WHERE usr_id = " . $_POST['newUsr'] . " AND board_id = $board_id";
     $result = $conn->query($sql);
     if ($result->num_rows != 0) {
         //add appointment assignment to user
