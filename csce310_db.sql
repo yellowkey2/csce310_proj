@@ -47,8 +47,7 @@ CREATE TABLE `appointment` (
 CREATE TABLE `appointment_assignments` (
   `app_assignment_id` int(11) NOT NULL,
   `usr_id` int(11) NOT NULL,
-  `appointment_id` int(11) NOT NULL,
-  `usr_relation` varchar(255) NOT NULL
+  `appointment_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

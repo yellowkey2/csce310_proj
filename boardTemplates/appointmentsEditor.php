@@ -16,7 +16,29 @@ if ($_SESSION['b_id_' . $board_id] == false) {
 }
 
 //handle queries for add appt
-//TODO
+if (isset($_POST['addItemBtn']) && isset($_POST['apptContent']) && isset($_POST['date']) && isset($_POST['inputMinutes']) && isset($_POST['apptType'])) {
+    $content = $_POST['apptContent'];
+    $type = $_POST['apptType'];
+    $input_minutes = $_POST['inputMinutes'];
+    $input_datetime = $_POST['date'];
+
+    //set duration
+    $time = new DateTime();
+    $time->add(new DateInterval('PT' . $input_minutes . 'M')); 
+    $duration = $time->format('H:i:s');
+
+    //set meeting date and time
+    $dt = new DateTime($input_datetime);
+    $dt = $dt->format('Y-m-d H:i:s');
+    //insert into appointments table
+    $sql = "INSERT INTO appointment (appt_time, appt_duration, appt_type, board_id, appt_name) VALUES ('$dt', '$duration', '$type', $board_id, '$content')";
+    $result = $conn->query($sql);
+    $insert_id = mysqli_insert_id($conn);
+
+    //insert into appointment_assignments table
+    $sql = "INSERT INTO appointment_assignments (usr_id, appointment_id) VALUES (" . $_SESSION['usr_id'] . ", $insert_id)";
+    $conn->query($sql);
+}
 
 //handle queries for update and delete
 $appt_id = "";
@@ -24,7 +46,7 @@ if (isset($_POST['apptID'])) {
     $appt_id = $_POST['apptID'];
 }
 //delete appt
-if (isset($_POST['delete'])) {
+if (isset($_POST['deleteAppt'])) {
     //delete from appt
     $sql = "DELETE FROM appointment_assignments WHERE appointment_id = $appt_id";
     $conn->query($sql);
@@ -33,18 +55,16 @@ if (isset($_POST['delete'])) {
     $conn->query($sql);
 }
 
-//TODO
 //update appt
-if (isset($_POST['update']) && isset($_POST['newUsr'])) {
+if (isset($_POST['updateAppt']) && isset($_POST['newUsr'])) {
     //check if user is in board
     $sql = "SELECT usr_id FROM board_assignments WHERE usr_id = " . $_POST['newUsr'] . "AND board_id = $board_id";
     $result = $conn->query($sql);
-    if($result->num_rows != 0){
+    if ($result->num_rows != 0) {
         //add appointment assignment to user
         $sql = "INSERT INTO appointment_assignments (usr_id, appointment_id) VALUES (" . $_POST['newUsr'] . ", $appt_id)";
         $conn->query($sql);
     }
-    
 }
 ?>
 <div class="vertScroll">
@@ -57,8 +77,8 @@ if (isset($_POST['update']) && isset($_POST['newUsr'])) {
         echo $row['appt_name'];
         echo "<input type='hidden' name='apptID' value='" . $row["appt_id"] . "'>";
         echo "<input type='text' name='newUsr' placeholder='user id'>";
-        echo "<button type='submit' name='update'>Add Attendee</button>";
-        echo "<button type='submit' name='delete'>Delete</button>";
+        echo "<button type='submit' name='updateAppt'>Add Attendee</button>";
+        echo "<button type='submit' name='deleteAppt'>Delete</button>";
         echo "</form>";
     }
     ?>
@@ -66,10 +86,10 @@ if (isset($_POST['update']) && isset($_POST['newUsr'])) {
 <div id="addAppointment">
     <h3>Add Appointment:</h3>
     <form method="POST" class="vertForm">
-        <input type="text" name="apptContent" placeholder='Describe Appointment'>
-        <input type="text" name="date" placeholder='Eg. May 2, 2023'>
-        <input type="text" name="inputMinutes" placeholder='Meeting Duration (Minutes)'>
-        <input type="text" name="apptType" placeholder='Type of Appointment (eg. Meeting)'>
+        <input type="text" name="apptContent" placeholder='Name Appointment'>
+        <input type="text" name="date" placeholder='Date: May 2, 2023 4:00pm'>
+        <input type="text" name="inputMinutes" placeholder='Duration (Minutes)'>
+        <input type="text" name="apptType" placeholder='Type (eg. Meeting)'>
         <br>
         <button type="submit" name="addItemBtn">Submit</button>
     </form>
