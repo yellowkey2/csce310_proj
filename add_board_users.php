@@ -54,7 +54,7 @@ if (!$cur_board_id) {
         <input type="submit" value="Remove User">
     </form>
     <?php
-    if (isset($_POST["remove_usr_id"])) {
+    if (isset($_POST["remove_usr_id"]) && $_POST["remove_usr_id"] != $_SESSION["usr_id"]) {
         $remove_usr_id = $_POST["remove_usr_id"];
         $sql = "DELETE FROM board_assignments WHERE board_id=$cur_board_id AND usr_id=$remove_usr_id";
         if ($conn->query($sql) === TRUE) {
