@@ -33,7 +33,7 @@ if (!$cur_board_id) {
             if ($result->num_rows > 0) {
                 $sql = "UPDATE board_assignments SET access_level = $access_level WHERE usr_id = $usr_id";
                 $conn->query($sql);
-                echo "updated user" . $access_level;
+                echo "updated user";
 
             } else {
                 //add user if none of the above
@@ -41,7 +41,7 @@ if (!$cur_board_id) {
                 if ($conn->query($sql) === TRUE) {
                     echo "User added successfully";
                 } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
+                    echo "Error: could not find user";
                 }
             }
         }
@@ -60,7 +60,7 @@ if (!$cur_board_id) {
         if ($conn->query($sql) === TRUE) {
             echo "User removed successfully";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: could not find user";
         }
     }
     ?>
