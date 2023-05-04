@@ -18,10 +18,10 @@ if ($_SESSION['b_id_' . $board_id] == false) {
 $sql = "SELECT * FROM appointment WHERE board_id = '" . $board_id . "'";
 $items = $conn->query($sql);
 while ($row = $items->fetch_assoc()) {
-    echo "<h5>appointment type:<b>" . $row['appt_type'] . "</b></h5>";
-    echo "<h5>name:<b>" . $row['appt_name'] . "</b></h5>";
-    echo "<h5>date & time:<b>" . $row['appt_time'] . "</b></h5>";
-    echo "<h5>Length:<b>" . $row['appt_duration'] . "</b></h5>";
-    echo "<hr>";
+    echo "<h5>appointment type: <b>" . $row['appt_type'] . "</b></h5>";
+    echo "<h5>name: <b>" . $row['appt_name'] . "</b></h5>";
+    echo "<h5>date & time: <b>" . $row['appt_time'] . "</b></h5>";
+    echo "<h5>Length: <b>" . $row['appt_duration'] . "</b></h5>";
+    echo "<hr class='thick'>";
 }
 ?>
