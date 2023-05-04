@@ -12,8 +12,8 @@
     <?php include('templates/menu.php'); ?>
     <?php include('templates/db_login.php'); ?>
 
-    <!-- Store username from login -->
     <?php
+    //Store username from login
     //if usr_name not set, return to index
     if (!isset($_SESSION['usr_name'])) {
         header('Location: index.php');
@@ -27,13 +27,12 @@
     $usr_id = $row['usr_id'];
     $_SESSION['usr_id'] = $usr_id;
 
-    // Retrieve all board ids the user is a member of
-    // $sql = "SELECT board_id FROM board_assignments WHERE usr_id = '" . $usr_id . "'";
-    // $result = $conn->query($sql);
-    // $board_ids = array();
-    // while ($row = $result->fetch_assoc()) {
-    //     array_push($board_ids, $row['board_id']);
-    // }
+    //update username handler
+    if (isset($_POST['updateUsername']) && isset($_POST['newUsername'])) {
+        $sql = "UPDATE users SET usr_name = '" . $_POST['newUsername'] . "' WHERE usr_id = $usr_id";
+        $conn->query($sql);
+        $_SESSION['usr_name'] = $_POST['newUsername'];
+    }
     ?>
 
     <!-- Display welcome messsage for usr_name -->
@@ -80,7 +79,7 @@
         echo $row["board_name"] . ": " . "<input type='submit' name='loadBoardButton' value='Go To Board' >";
         echo "</form>";
         //allows board.php to know if user has access to the board
-        $_SESSION["b_id_". $row["board_id"]] = true;
+        $_SESSION["b_id_" . $row["board_id"]] = true;
     }
     ?>
     <hr>
@@ -98,6 +97,11 @@
     ?>
     <hr>
 
+    <p style="padding-left: 10px"><b>Account Actions</b></p>
+    <form method="POST">
+        <input type="text" name="newUsername" placeholder="new username">
+        <button type="submit" name="updateUsername">Update Username</button>
+    </form>
     <form method="post" action="delete_account.php">
         <button id="deleteAccountBtn" type="submit" name="deleteAccount">Delete Account</button>
     </form>
