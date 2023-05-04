@@ -74,12 +74,16 @@ if (isset($_POST['updateAppt']) && isset($_POST['newUsr'])) {
     $items = $conn->query($sql);
     while ($row = $items->fetch_assoc()) {
         echo "<form method='POST' class='appointmentEditor'>";
-        echo $row['appt_name'];
+        echo "<h5>appointment type:<b>" . $row['appt_type'] . "</b></h5>";
+        echo "<h5>name:<b>" . $row['appt_name'] . "</b></h5>";
+        echo "<h5>date & time:<b>" . $row['appt_time'] . "</b></h5>";
+        echo "<h5>Length:<b>" . $row['appt_duration'] . "</b></h5>";
         echo "<input type='hidden' name='apptID' value='" . $row["appt_id"] . "'>";
         echo "<input type='text' name='newUsr' placeholder='user id'>";
         echo "<button type='submit' name='updateAppt'>Add Attendee</button>";
         echo "<button type='submit' name='deleteAppt'>Delete</button>";
         echo "</form>";
+        echo "<hr>";
     }
     ?>
 </div>
