@@ -61,7 +61,7 @@ include("templates/db_login.php");
             ?>
         </div>
         <div id="boardAppointments">
-            <h2>Board Appointments</h2>
+            <h2>Appointments</h2>
             <?php
             if($access_level < 2){
                 include("./boardTemplates/appointmentsEditor.php");
@@ -72,7 +72,7 @@ include("templates/db_login.php");
             ?>
         </div>
         <div id="boardComments">
-            <h2>Board Comments</h2>
+            <h2>Comments</h2>
             <?php 
             include("./boardTemplates/comments.php");
             ?>
