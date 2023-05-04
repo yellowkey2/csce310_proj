@@ -36,17 +36,7 @@ include("templates/db_login.php");
     $row = $result->fetch_assoc();
     $access_level = $row['access_level'];
     $_SESSION["access_level"] = $access_level;
-    //send user to correct board page based on access level
-    // if ($access_level == 0) {
-    //     header("Location: adminBoard.php");
-    // } else if ($access_level == 1) {
-    //     header("Location: editorBoard.php");
-    // } else if ($access_level == 2) {
-    //     header("Location viewerBoard.php");
-    // } else {
-    //     echo "no valid access level";
-    //     exit;
-    // }
+
     $conn->close();
     ?>
     <div id="boardContainer">
