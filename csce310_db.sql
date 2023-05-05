@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2023 at 10:42 PM
+-- Generation Time: May 05, 2023 at 11:00 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -41,7 +41,7 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`appt_time`, `appt_duration`, `appt_id`, `appt_type`, `board_id`, `appt_name`) VALUES
-('2025-05-05 17:00:00', '01:00:00', 12, 'meeting', 13, 'meeting');
+('2023-05-02 00:00:00', '23:08:38', 2, 'Meeting', 1, 'helle');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `appointment_assignments` (
 --
 
 INSERT INTO `appointment_assignments` (`app_assignment_id`, `usr_id`, `appointment_id`) VALUES
-(14, 123462, 12);
+(2, 123456, 2);
 
 -- --------------------------------------------------------
 
@@ -79,9 +79,7 @@ CREATE TABLE `board` (
 --
 
 INSERT INTO `board` (`board_id`, `board_name`, `board_admin_id`) VALUES
-(10, 'test board', 123461),
-(11, 'board', 123461),
-(13, 'testBoard2', 123462);
+(1, 'board2', 123456);
 
 -- --------------------------------------------------------
 
@@ -101,22 +99,8 @@ CREATE TABLE `board_assignments` (
 --
 
 INSERT INTO `board_assignments` (`assignment_id`, `usr_id`, `board_id`, `access_level`) VALUES
-(15, 123461, 10, 0),
-(17, 12344, 10, 2),
-(18, 123461, 11, 0),
-(20, 123462, 13, 0),
-(22, 12344, 13, 2);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `board_assign_usr`
--- (See below for the actual view)
---
-CREATE TABLE `board_assign_usr` (
-`usr_id` int(11)
-,`board_id` int(11)
-);
+(1, 123456, 1, 0),
+(2, 123455, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -132,6 +116,17 @@ CREATE TABLE `board_item` (
   `usr_id` int(11) NOT NULL,
   `board_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `board_item`
+--
+
+INSERT INTO `board_item` (`item_id`, `item_timestamp`, `item_posttype`, `item_content`, `usr_id`, `board_id`) VALUES
+(52, '2023-05-04', 1, '1', 123456, 1),
+(53, '2023-05-04', 0, '1', 123456, 1),
+(58, '2023-05-04', 2, 'can i add?', 123455, 1),
+(59, '2023-05-04', 2, 'justins comment', 123455, 1),
+(60, '2023-05-04', 2, 'well', 123455, 1);
 
 -- --------------------------------------------------------
 
@@ -151,17 +146,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`usr_id`, `usr_name`, `usr_passwd`) VALUES
 (12344, 'not justin', 'password_also'),
-(123461, 'justin', 'password'),
-(123462, 'sloan davis', 'password');
-
--- --------------------------------------------------------
-
---
--- Structure for view `board_assign_usr`
---
-DROP TABLE IF EXISTS `board_assign_usr`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `board_assign_usr`  AS SELECT `board_assignments`.`usr_id` AS `usr_id`, `board_assignments`.`board_id` AS `board_id` FROM `board_assignments``board_assignments`  ;
+(123455, 'justin', 'password'),
+(123456, 'hello', 'hello');
 
 --
 -- Indexes for dumped tables
@@ -219,37 +205,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `appt_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `appointment_assignments`
 --
 ALTER TABLE `appointment_assignments`
-  MODIFY `app_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `app_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `board`
 --
 ALTER TABLE `board`
-  MODIFY `board_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `board_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `board_assignments`
 --
 ALTER TABLE `board_assignments`
-  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `board_item`
 --
 ALTER TABLE `board_item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123463;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123457;
 
 --
 -- Constraints for dumped tables
