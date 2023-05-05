@@ -9,7 +9,6 @@
 
 <body>
     <?php include('templates/header.php'); ?>
-    <?php include('templates/menu.php'); ?>
     <?php include('templates/db_login.php'); ?>
 
     <?php
