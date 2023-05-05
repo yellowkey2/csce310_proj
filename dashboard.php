@@ -1,6 +1,6 @@
 <!-- This file displays the dashboard for a user. It lists each board a user is apart of aand any boards they own. It also allows the user to create a board-->
 <!-- This file was created by Justin Heger -->
-<!-- This file was edited by Logan Talton -->
+<!-- This file was edited by Logan Talton and Sloan Davis -->
 
 <?php session_start(); ?>
 <html>

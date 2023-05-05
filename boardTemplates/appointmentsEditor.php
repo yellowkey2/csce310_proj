@@ -1,5 +1,5 @@
 <!-- This is a component that will be rendered in the Dashboard to display board appointments with editing capability -->
-
+<!-- THIS FILE IS BY SLOAN DAVIS -->
 <?php
 // session_start();
 include("templates/db_login.php");
@@ -58,7 +58,8 @@ if (isset($_POST['deleteAppt'])) {
 //update appt
 if (isset($_POST['updateAppt']) && isset($_POST['newUsr'])) {
     //check if user is in board
-    $sql = "SELECT usr_id FROM board_assignments WHERE usr_id = " . $_POST['newUsr'] . " AND board_id = $board_id";
+    //USES VIEW
+    $sql = "SELECT usr_id FROM board_assign_usr WHERE usr_id = " . $_POST['newUsr'] . " AND board_id = $board_id";
     $result = $conn->query($sql);
     if ($result->num_rows != 0) {
         //add appointment assignment to user

@@ -1,5 +1,5 @@
 <!-- This is a component that will be rendered in the Dashboard to display board items with editing capability -->
-
+<!-- THIS FILE IS BY SLOAN DAVIS -->
 <?php
 // print_r($_SESSION);
 include("templates/db_login.php");

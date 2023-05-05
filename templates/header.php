@@ -1,3 +1,4 @@
+<!-- THIS FILE IS BY SLOAN DAVIS -->
 <header>
     <img id="logoImage" style="max-height: 10vh" src="images/pmslogo.png" alt="logo" />
     <form action="dashboard.php">

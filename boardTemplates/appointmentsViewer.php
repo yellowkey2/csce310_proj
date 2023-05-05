@@ -1,5 +1,5 @@
 <!-- This is a component that will be rendered in the Dashboard to display board appointments without editing capability -->
-
+<!-- THIS FILE IS BY SLOAN DAVIS -->
 <?php
 // session_start();
 include("templates/db_login.php");
