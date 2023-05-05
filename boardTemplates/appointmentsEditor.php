@@ -23,9 +23,11 @@ if (isset($_POST['addItemBtn']) && isset($_POST['apptContent']) && isset($_POST[
     $input_datetime = $_POST['date'];
 
     //set duration
-    $time = new DateTime();
-    $time->add(new DateInterval('PT' . $input_minutes . 'M')); 
-    $duration = $time->format('H:i:s');
+    $hours = floor($input_minutes / 60);
+    $minutes = $input_minutes % 60;
+    
+    // Format the time as HH:MM:SS
+    $duration = sprintf('%02d:%02d:00', $hours, $minutes);
 
     //set meeting date and time
     $dt = new DateTime($input_datetime);

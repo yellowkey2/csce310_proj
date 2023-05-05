@@ -27,10 +27,10 @@ if (!$cur_board_id) {
             echo "cannot add self";
         } else {
             //check if user already in board
-            $sql = "SELECT usr_id FROM board_assignments WHERE usr_id = $usr_id";
+            $sql = "SELECT usr_id FROM board_assign_usr WHERE usr_id = $usr_id AND board_id = " . $cur_board_id;
             $result = $conn->query($sql);
             //update user if already exists in board
-            if ($result->num_rows > 0) {
+            if ($result->fetch_row() != null) {
                 $sql = "UPDATE board_assignments SET access_level = $access_level WHERE usr_id = $usr_id";
                 $conn->query($sql);
                 echo "updated user";
