@@ -1,6 +1,6 @@
 <!-- This file acts as the login page for the user. It also contains functionality to create an account -->
 <!-- This file was created by Justin Heger -->
-<!-- This file was edited by Logan Talton -->
+<!-- This file was edited by Logan Talton & Sloan Davis -->
 
 <?php
 //make sure session is empty
